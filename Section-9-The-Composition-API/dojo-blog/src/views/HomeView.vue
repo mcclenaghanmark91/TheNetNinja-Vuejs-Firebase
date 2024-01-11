@@ -1,40 +1,24 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <input type="text" v-model="search">
-    <p>search term - {{ search }}</p>
-    <div v-for="name in matchingNames" :key="name">{{ name }}</div>
-    <button @click="handleClick">stop watching</button>
+    <PostList :posts="posts"/>
   </div>
 </template>
 
 <script>
-import { computed, ref, watch, watchEffect} from 'vue'
-
+import { ref } from 'vue'
+import PostList from '../components/PostList.vue'
 export default {
   name: 'HomeView',
+  components: {PostList},
   setup() {
-    const search = ref('')
-    const names = ref(['mario', 'yoshi', 'luigi', 'toad', 'bowser', 'koopa', 'peach'])
+    
+    const posts = ref([
+      {title: 'welcome to my blog', body: 'lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum', id: 1},
+      {title: 'top 5 css tips', body: 'lorem ipsum', id: 2}
+    ])
 
-    const stopWatch = watch(search, () => {
-      console.log('watch function ran')
-    })
-
-    const stopWatchEffect = watchEffect(() => {
-      console.log('watchEffect function ran', search.value)
-    })
-
-    const matchingNames = computed(() => {
-      return names.value.filter((name) => name.includes(search.value))
-    })
-
-    const handleClick = () => {
-      stopWatchEffect()
-      stopWatch()
-    }
-
-    return { names, search, matchingNames, handleClick }
+    return { posts }
   }
 }
 </script>
