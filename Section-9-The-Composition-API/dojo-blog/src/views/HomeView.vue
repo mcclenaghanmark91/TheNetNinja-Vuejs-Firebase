@@ -3,6 +3,8 @@
     HOME
     <p ref="p">My name is {{ name }} and my age is {{ age }}</p>
     <button @click="handleClick">click me</button>
+    <button @click="age++">Add 1 to age</button>
+    <input type="text" v-model="name">
   </div>
 </template>
 
@@ -12,22 +14,23 @@ import {ref} from 'vue'
 export default {
   name: 'HomeView',
   setup() {
-    
-    const p = ref(null)
-    console.log(p, p.value, 'uh oh')
+    //const p = ref(null)
 
-    console.log('setup')
     //these aren't reactive values but can be made to be so
-    let name = 'Mario'
-    let age = 30
+    const name = ref('Mario')
+    const age = ref(30)
 
     const handleClick = () => {
-      console.log(p, p.value)
-      p.value.classList.add('test')
-      p.value.textContent = 'hello, ninjas'
+      name.value = 'luigi'
+      age.value = 35
     }
 
-    return { name, age, handleClick, p }
+    return { name, age, handleClick}
+  },
+  data() {
+    return {
+      score: 5
+    }
   }
 }
 </script>
