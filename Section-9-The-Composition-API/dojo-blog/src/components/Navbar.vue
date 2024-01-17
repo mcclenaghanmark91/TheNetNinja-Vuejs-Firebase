@@ -1,6 +1,6 @@
 <template>
     <header>
-        <h1>The Dojo Blog</h1>
+        <h1><router-link :to=" { name: 'home' }">The Dojo Blog</router-link></h1>
         <nav>
             <router-link :to=" { name: 'home' }">Home</router-link>
             <router-link :to=" { name: 'Create' }">Create Post</router-link>
@@ -31,7 +31,7 @@ header a{
     text-decoration: none;
     margin-left: 20px;
 }
-header a.router-link-active{
+header nav a.router-link-active{
     color: #444;
     font-weight: bold;
 }
