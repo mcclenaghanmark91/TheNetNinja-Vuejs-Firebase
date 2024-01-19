@@ -12,7 +12,6 @@ const getPosts = () => {
           .get()
         
         posts.value = res.docs.map(doc => {
-          //console.log(doc.data())
           return { ...doc.data(), id: doc.id }
         })
       }
