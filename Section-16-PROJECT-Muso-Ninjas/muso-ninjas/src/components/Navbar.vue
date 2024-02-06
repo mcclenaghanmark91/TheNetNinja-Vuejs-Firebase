@@ -7,13 +7,13 @@
                 <div v-if="user">
                     <router-link :to="{ name: 'CreatePlaylist' }">Create Playlist</router-link>
                     <router-link :to="{ name: 'UserPlaylists' }">My Playlists</router-link>
+                    <span>Hi there, {{ user.displayName }}</span>
                     <button @click="handleClick">Logout</button>
                 </div>
                 <div v-else>
                     <router-link class="btn" :to="{ name: 'Signup'}">Sign up</router-link>
                     <router-link class="btn" :to="{ name: 'Login'}">Log in</router-link>
                 </div>
-
             </div>
         </nav>
     </div>
@@ -22,7 +22,7 @@
 <script>
 import useLogout from '@/composables/useLogout';
 import getUser from '@/composables/getUser';
-import { useRouter} from 'vue-router';
+import { useRouter } from 'vue-router';
 
 export default {
     setup() {
@@ -67,5 +67,12 @@ nav .links a, button {
 }
 nav img{
     max-height: 60px;
+}
+span{
+    font-size: 14px;
+    display: inline-block;
+    margin-left: 16px;
+    padding-left: 16px;
+    border-left: 1px solid #eee;
 }
 </style>
